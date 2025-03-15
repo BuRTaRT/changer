@@ -7,6 +7,8 @@ import classNames from "classnames";
 
 
 const Registration = () => {
+
+    
     const {
         register,
         formState: {errors},
