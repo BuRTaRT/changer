@@ -1,0 +1,195 @@
+.change_block_container {
+    height: auto;
+    background-color: rgb(243, 247, 252);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.give_block {
+    width: 35%;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #e1e9f2;
+}
+
+.arrow {
+    margin: 0px 10px;
+}
+
+.text {
+    margin-left: 20px;
+}
+
+.get_block {
+    width: 63%;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #e1e9f2;
+}
+
+.get_block:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.crypto_element {
+    padding: 5px 0;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    cursor: pointer;
+    margin: 0 auto;
+
+}
+
+
+.active {
+    background-color: #F5F8FC;
+}
+
+.cryto_img {
+    height: 42px;
+}
+
+.cryto_img img {
+    height: 100%;
+}
+
+.cryto_img, .crypto_name {
+    margin-left: 20px;
+}
+
+.crypto_name {
+    width: 20%;
+}
+
+.text {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+.name_img {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+
+.text5 {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #7E90C0;
+
+}
+
+.crypto_currency, .crypto_reserv {
+    width: 29%;
+    text-align: center;
+}
+
+.crypto_currency {
+    text-align: left;
+    transform: translateX(15px);
+}
+.text {
+    color: #7E90C0;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.text1 {
+    color: #7E90C0;
+    transform: translateX(-55px);
+
+}
+
+
+.text2 {
+    color: #7E90C0;
+    transform: translateX(-40px);
+}
+
+.text3 {
+    color: #7E90C0;
+    transform: translateX(-5px);
+}
+
+@media screen and (max-width: 720px) {
+    .change_block_container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .give_block {
+        width: 40%;
+        height: auto;
+
+    }
+
+    .get_block {
+        width: 57%;
+    }
+
+    .text1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .crypto_currency {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .text2, .text3654 {
+        display: none;
+    }
+
+    .crypto_element {
+        flex-direction: column;
+    }
+
+    .cryto_img, .crypto_name {
+        margin-left: 0px;
+    }
+
+    .name_img {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .crypto_name {
+        text-align: center;
+        width: auto;
+    }
+
+    .crypto_reserv {
+        display: none;
+    }
+
+    .crypto_currency {
+        margin-top: 5px;
+        text-align: center;
+
+        margin-left: -20px;
+    }
+    .text1{
+        transform: translateX(0);
+    }
+
+    .text2, .text3 {
+        display: none;
+    }
+}

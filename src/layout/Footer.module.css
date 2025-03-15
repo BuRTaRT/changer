@@ -1,0 +1,50 @@
+
+.footer{
+    background-color: gainsboro;
+    padding: 35px 0px;
+    padding-top: 5px;
+    margin-top: 30px;
+
+}
+.footer_nav{
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.footer_nav_item div{
+    cursor: pointer;
+    margin-top: 5px;
+}
+.footer_nav_item div:hover{
+    color: gray;
+}
+.footer_nav_item{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.link{
+    text-decoration: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.link:hover{
+   color: gray;
+}
+.footer_nav_item h3{
+    margin-bottom: 5px;
+}
+
+.whole_footer{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+}
+@media screen and (max-width: 720px){
+    .footer_nav{
+        justify-content: space-between;
+        text-align: center;
+    }
+}

@@ -1,0 +1,283 @@
+.operation_header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.progress_block {
+    display: flex;
+}
+
+.progress_img {
+    margin-top: 20px;
+}
+
+.progress {
+    margin-top: 20px;
+    flex-grow: 1;
+    margin-left: 15px;
+    max-width: 90%;
+}
+
+.progress_bar {
+    margin: 0 auto;
+    background-color: darkgray;
+    height: 8px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.progress_bar_progress {
+    background-color: #0c72d8;
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+
+}
+
+.give_get_block {
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    height: 140px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+
+}
+
+.give_get_wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.give_block {
+    display: flex;
+    align-items: center;
+}
+
+.give_block_img {
+    height: 50px;
+}
+
+.give_block_img img {
+    height: 100%;
+}
+
+.give_block_info {
+    text-align: right;
+    line-height: 25px;
+    padding-right: 10px;
+
+}
+
+.give_block_info_rigth {
+    text-align: left;
+    line-height: 25px;
+    padding-left: 10px;
+
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+}
+
+.info_block {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+
+}
+
+.transfer_info {
+    width: 60%;
+}
+
+.transfer_block {
+    background-color: #3e3737;
+    border-radius: 4px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 7px;
+    word-wrap: break-word;
+    overflow: hidden;
+    cursor: pointer;
+
+
+}
+
+.transfer_sum {
+    color: white;
+    margin-left: 10px;
+    word-wrap: break-word;
+    width: 90%;
+}
+
+.transfer_copy {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.transfer {
+    margin-top: 20px;
+}
+
+.tip {
+    background-color: rgba(0, 0, 0, .05);
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.buttons_block {
+
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+.buttons_block button {
+    height: 45px;
+    width: 47%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn_accept {
+    background-color: #0D64BA;
+    color: white;
+    border: 0;
+}
+
+.btn_accept_expired {
+    background-color: #F0F0F0;
+    color: white;
+    border: 0;
+}
+
+.btn_decline {
+    border: 0;
+}
+
+.small_text {
+    display: none;
+}
+
+.qr_block {
+    margin: 0 auto;
+
+}
+
+.qr_container {
+    background-color: #5E72DF;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.qr_container h3 {
+    color: white;
+}
+
+.xs {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .qr_block {
+        display: none;
+    }
+
+    .xs {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .info_block {
+        flex-direction: column;
+    }
+
+    .give_block {
+        flex-direction: column;
+    }
+
+    .give_block_info {
+        order: 2;
+    }
+
+    .give_block_info_rigth {
+        order: 2
+    }
+
+    .give_block_img {
+        height: 80px;
+    }
+
+    .give_get_wrapper {
+        width: 80%;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .txt {
+        font-size: 14px;
+    }
+
+    .give_get_block {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .small_text {
+        display: block;
+        padding: 0 10px;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, .7);
+    }
+
+    .transfer_info {
+        width: 100%;
+    }
+}
+
+.disapear {
+    animation: wanish 0.8s;
+}
+
+.info_block i:hover {
+    color: #0c72d8 !important;
+}
+
+.expired {
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    animation: wanish linear 1.5s infinite alternate;
+}
+
+@keyframes wanish {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}

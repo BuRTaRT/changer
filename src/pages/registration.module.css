@@ -1,0 +1,84 @@
+
+.registration_header {
+    margin: 0;
+    text-align: center;
+}
+
+.registration_block {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    height: 0px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.field input {
+    height: 28px;
+    width: 200px;
+    font-size: 18px;
+    border: 1px rgba(0, 0, 0, .2) solid;
+    border-radius: 3px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 0px;
+    background-color: #0D64BA;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error {
+    color: red;
+    /*margin: 0 0 20px 0;*/
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+
+}
+
+.field .check{
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    transform: translateY(2px);
+
+}
+.lastError{
+    margin-bottom: 20px;
+}
+.check{
+    cursor: pointer;
+}
+.checkbox span {
+    margin-left: 5px;
+}
+.checkbox label{
+    cursor: pointer;
+}

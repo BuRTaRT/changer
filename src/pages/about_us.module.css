@@ -1,0 +1,20 @@
+
+.about_us_block{
+    padding: 25px;
+    background-color: white;
+
+}
+.about_us_questions{
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0;
+}
+.about_us_answers{
+    margin-top: 10px;
+}
+.about_us{
+    background-color: #F3F7FC;
+}
+.about_us_name{
+    margin-top: 20px;
+}

@@ -1,0 +1,60 @@
+
+.advantages {
+    display: flex;
+}
+
+.advantage div {
+    margin-top: 20px;
+}
+
+.advantage {
+    width: 100%;
+    padding-right: 15px;
+}
+
+.advantage_name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.advantage_description {
+    font-size: 15px;
+    color: gray;
+}
+
+.review{
+    padding-left: 20px;
+    height: 120px;
+    border-radius: 5px;
+    margin-top:25px;
+    box-shadow: 0 0 5px #e1e9f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.reviewer{
+    margin-top: 0px;
+    font-weight: lighter;
+}
+.home_info{
+    margin-top: 25px;
+}
+.reviews_block{
+    margin-top: 60px;
+}
+
+@media screen and (max-width: 720px) {
+
+    .advantages {
+        flex-direction: column;
+    }
+
+}
+.crypto h2{
+    text-align: center;
+}
+.text{
+    line-height: 1.5;
+}

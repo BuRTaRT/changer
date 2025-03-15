@@ -1,0 +1,195 @@
+.select_item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.select_item img {
+    margin-right: 10px;
+}
+
+.warning {
+    background-color: white;
+    padding: 25px;
+}
+
+.exchange_block {
+    display: flex;
+}
+
+.exchange_inner1 {
+    width: 80%;
+}
+
+.exchange {
+    background-color: #F3F7FC;
+}
+
+.get_give_block {
+    padding: 25px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.get_give_block h2 {
+
+}
+
+.get, .give {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.get_select, .give_select {
+    width: 250px;
+}
+
+.sum {
+    display: flex;
+
+}
+
+.sum_text {
+    margin-top: 12px;
+}
+
+.input_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sum input {
+    height: 40px;
+    margin-left: 5px;
+    font-size: 16px;
+    width: 180px;
+}
+
+.star {
+    color: red;
+}
+
+.hr {
+    margin: 30px 0px;
+}
+
+.wallet {
+    margin-top: 30px;
+    width: 250px;
+}
+
+.wallet input {
+    height: 28px;
+    font-size: 18px;
+    padding: 5px;
+    width: 235px;
+}
+
+.button_submit button {
+    padding: 15px 30px;
+    font-size: 25px;
+    background-color: #0D64BA;
+    color: white;
+    border: 0px;
+    cursor: pointer;
+}
+.bold{
+    font-weight: bold;
+}
+.checkbox {
+    margin-bottom: 10px;
+}
+
+.info {
+    background-color: white;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.info h2 {
+    color: green;
+
+}
+
+.error {
+    text-align: left;
+    color: red;
+    margin: 0px;
+    padding-left: 5px;
+
+}
+
+.input {
+    height: 200px;
+    border: 1px rgba(0, 0, 0, .2) solid;
+    border-radius: 3px;
+    margin-top: 2px;
+}
+
+.input:focus {
+    outline: none !important;
+    border: 1px solid rgba(0, 0, 0, .4);
+    box-shadow: 0 0 1px #719ECE;
+}
+.input::placeholder{
+    color: black;
+}
+.field2 {
+    margin-top: 20px;
+}
+.checkbox_error{
+    color: red;
+
+}
+.widget{
+    width: 200px;
+}
+@media screen and (max-width: 720px) {
+    .wallet_inner {
+        margin-top: 50px;
+    }
+
+    .get, .give {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .exchange_inner1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .wallet {
+        margin: 0 auto;
+    }
+
+    .wallet_inner {
+        margin-top: 25px;
+    }
+
+    .sum {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .input_container {
+        margin: 0 auto;
+        width: auto;
+    }
+
+    .sum input {
+        height: 40px;
+        margin-left: 5px;
+        font-size: 16px;
+        width: auto;
+        width: 248px;
+    }
+
+
+}

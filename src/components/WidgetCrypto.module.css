@@ -1,0 +1,24 @@
+.widget {
+    height: 100px;
+
+}
+.widget_container{
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    margin-top: -16px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+}
+
+@media screen and (max-width: 720px) {
+    .widget_container {
+        margin-top: -16px;
+    }
+
+    .widget {
+        margin-left: -19px;
+        margin-right: -19px;
+    }
+}

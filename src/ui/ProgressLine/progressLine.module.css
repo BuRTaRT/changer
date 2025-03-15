@@ -1,0 +1,87 @@
+
+.progress{
+    width:80%;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+.progress_line{
+    width: 100%;
+    height: 10px;
+    background-color: rgba(0,0,0,.1);
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.progress_steps{
+    width: 25px;
+    height: 25px;
+    background-color: lightgray;
+    transform: translateY(-33%);
+    border-radius: 20px;
+
+}
+.step_icon{
+
+}
+.steps_info{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+
+}
+.step_info{
+    width: 25%;
+    text-align: center;
+
+}
+.step_text{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    color: lightgray;
+}
+.active{
+    background-color: limegreen;
+    /*animation: step 1s linear 1s infinite alternate ;*/
+    /*animation-iteration-count: infinite;*/
+}
+.error_color{
+   color: #f61212;
+}
+.error{
+    background-color:  #f61212;
+}
+
+.active_text{
+    animation: text linear 1.5s infinite alternate ;
+}
+.active_text_error{
+    animation: text_error linear 1.5s infinite alternate ;
+}
+@keyframes text_error {
+    from{color: #f61212}
+    to{color: rgba(0,0,0,.3)}
+}
+@keyframes text {
+    from{color: black}
+    to{color: lightgray}
+}
+
+@keyframes step{
+   from{background-color: lightgray}
+    to{background-color: green}
+}
+
+.default_icon_color{
+    color:lightgray
+}
+@media screen and (max-width: 720px){
+    .progress{
+        width: 100%;
+    }
+    .step_text{
+        font-size: 12px;
+    }
+}

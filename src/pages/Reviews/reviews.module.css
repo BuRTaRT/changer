@@ -1,0 +1,66 @@
+.reviews {
+    gap: 20px;
+    display: grid;
+
+}
+
+.leave_feedback {
+    background-color: white;
+    padding: 0px 25px;
+    padding-bottom: 25px;
+}
+
+.leave_feedback h2 {
+    padding-top: 20px;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.name_input {
+    height: 30px;
+    width: 250px;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.name_input:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.message textarea {
+    max-width: 500px;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    resize: none;
+    min-height:150px;
+}
+
+.message textarea:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.button_container button{
+    padding: 10px 20px;
+    background-color: #0D5FB0;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.button_container button {
+    cursor: pointer;
+}
+.button_container button:hover{
+    opacity: 0.9;
+}

@@ -1,0 +1,54 @@
+.image_block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+    margin:  0 auto;
+}
+.image_give{
+    height: 70px;
+}
+.image_give img{
+    height: 100%;
+}
+.image_get{
+    height: 70px;
+}
+.image_get img{
+    height: 100%;
+}
+.transaction_information_block1{
+    text-align: center;
+    margin-top: 20px;
+}
+.header{
+    font-weight: bold;
+    font-size: 20px;
+}
+.transaction_details{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.img_block{
+    height: 25px;
+    align-items: center;
+    display: flex;
+    margin-top: 15px;
+}
+.img_block img{
+    height: 100%;
+    display: flex;
+    padding-right: 10px;
+
+}
+.hr{
+    margin-top: 50px;
+}
+.trans_details{
+    font-weight: bold;
+    color: rgba(0,0,0,0.6);
+}
+.bold{
+    font-weight: bold;
+}
