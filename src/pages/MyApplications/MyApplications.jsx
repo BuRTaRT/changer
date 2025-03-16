@@ -7,13 +7,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {getDatas} from "../../store/dataBaseSlice.js";
 
 const MyApplications = () => {
-    let [isFetching, setFetching] = useState(true)
+    const [isFetching, setIsFetching] = useState(true)
     const transactions = useSelector(state => state.dataBase.transactions)
     const dispatch = useDispatch();
     window.location = '#top'
 
     useEffect(() => {
-        dispatch(getDatas(setFetching))
+        dispatch(getDatas(setIsFetching))
     }, [])
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 10;
