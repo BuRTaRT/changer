@@ -6,14 +6,15 @@ import ReactPaginate from "react-paginate";
 import {useDispatch, useSelector} from "react-redux";
 import {getDatas} from "../../store/dataBaseSlice.js";
 
+
 const MyApplications = () => {
     const [isFetching, setIsFetching] = useState(true)
-    const transactions = useSelector(state => state.dataBase.transactions)
+    const transactions = useSelector(state => state.dataBase.transactions);
     const dispatch = useDispatch();
-    window.location = '#top'
+
 
     useEffect(() => {
-        dispatch(getDatas(setIsFetching))
+    dispatch(getDatas()).then(()=>setIsFetching(false))
     }, [])
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 10;

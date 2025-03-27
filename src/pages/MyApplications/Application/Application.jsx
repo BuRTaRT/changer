@@ -8,7 +8,7 @@ const Application = (props) => {
             <NavLink className={s.link} onClick={() => {
                 localStorage.current = props.id;
                 window.location = '#top'
-            }} to={'/operation'}>
+            }} to={`/operation/${props.id}`}>
                 <div className={s.application}>
                     <div className={s.application_id}>№ заявки: {props.operationNumber}</div>
                     <div className={s.application_info}>

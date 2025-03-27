@@ -31,7 +31,7 @@ function App() {
             <Routes>
                 <Route path='*' element={<Home/>}/>
                 <Route path='/exchangeForm' element={<ExchangeForm/>}/>
-                <Route path='/operation' element={<Operation/>}/>
+                <Route path='/operation/:id' element={<Operation/>}/>
                 <Route path='/MyApplications' element={<MyApplications/>}/>
                 <Route path='/about_us' element={<AboutUs/>}/>
                 <Route path='/signIn' element={<Login/>}/>

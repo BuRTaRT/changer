@@ -14,6 +14,7 @@ const Registration = () => {
         watch,
         reset
     } = useForm({mode: "onBlur"})
+    const [error,setError]=useState()
 
     const onSubmit = async (data) => {
         const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
@@ -22,7 +23,7 @@ const Registration = () => {
             await sendEmailVerification(user)
             reset()
         } catch (e) {
-            console.log(e)
+            setError(e)
         }
     }
     const [bool, setBool] = useState(true)
@@ -89,6 +90,7 @@ const Registration = () => {
                             <button type={'submit'}
                                     className={s.btn}>Зарегистрироваться
                             </button>
+                            {error ? <p>{error}</p>:null}
                         </div>
                     </div>
                 </div>

@@ -6,22 +6,11 @@ const AboutUs = () => {
         window.location = '#top'
     }, [])
 
-
-    const widget = <iframe scrolling="no" allowTransparency="true" frameBorder="0"
-                           src="https://www.tradingview-widget.com/embed-widget/ticker-tape/?locale=en#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22FOREXCOM%3ASPXUSD%22%2C%22title%22%3A%22S%26P%20500%22%7D%2C%7B%22proName%22%3A%22FOREXCOM%3ANSXUSD%22%2C%22title%22%3A%22US%20100%22%7D%2C%7B%22proName%22%3A%22FX_IDC%3AEURUSD%22%2C%22title%22%3A%22EUR%2FUSD%22%7D%2C%7B%22description%22%3A%22OANDA%22%2C%22proName%22%3A%22OANDA%3AEURUSD%22%7D%2C%7B%22description%22%3A%22SAXO%22%2C%22proName%22%3A%22SAXO%3AEURUSD%22%7D%2C%7B%22description%22%3A%22SPY%22%2C%22proName%22%3A%22AMEX%3ASPY%22%7D%2C%7B%22description%22%3A%22TSLA%22%2C%22proName%22%3A%22NASDAQ%3ATSLA%22%7D%2C%7B%22description%22%3A%22AAPL%22%2C%22proName%22%3A%22NASDAQ%3AAAPL%22%7D%5D%2C%22showSymbolLogo%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Atrue%2C%22displayMode%22%3A%22regular%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A76%2C%22utm_source%22%3A%22interactivecapital.org%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22ticker-tape%22%2C%22page-uri%22%3A%22interactivecapital.org%2Faccounts%2F%22%7D"
-                           title="ticker tape TradingView widget" lang="en" style={{
-        'user-select': 'none',
-        'box-sizing': 'border-box',
-        'display': 'block',
-        'height': '44px',
-        'width': '100%',
-    }}></iframe>
     return (
         <div className={s.about_us}>
             <div className="container">
                 <h2 className={s.about_us_name}>О нас / Контакты </h2>
                 <div className={s.about_us_block}>
-                    {widget}
                     <p className={s.about_us_questions}>Кто мы?</p>
                     <p className={s.about_us_answers}>Обменный сервис самых востребованных платежных систем и
                         криптовалют. Наша компания создана в Эстонии в 2017 году, собрав опытную команду программистов и

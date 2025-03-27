@@ -1,15 +1,13 @@
-.widget {
-    height: 100px;
 
-}
 .widget_container{
-    height: 80px;
     overflow: hidden;
-    position: relative;
-    margin-top: -16px;
-    margin-left: -10px;
-    margin-right: -10px;
-
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+.widget{
+    width: 100vw;
+    transform: translateX(-10px);
 }
 
 @media screen and (max-width: 720px) {

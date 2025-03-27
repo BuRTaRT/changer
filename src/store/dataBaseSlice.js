@@ -116,28 +116,23 @@ export const stopProcess = async () => {
     await remove(dbTransactionRef);
 }
 
-export const getDatas = (isFetched) => async (dispatch) => {
-    console.log('getDatas')
+export const getDatas = () => async (dispatch) => {
     const dbTransactionRef = ref(database, 'transactions');
     const snapshot = await get(dbTransactionRef);
     dispatch(dataBaseActions.setTransactions(snapshot.val()))
-    if (isFetched) {
-        isFetched(false)
-    }
+
 }
-export const getData = (fetchCompleted) => async (dispatch) => {
+export const getData = () => async (dispatch) => {
     const dbTransactionRef = ref(database, 'transactions/' + localStorage.current);
     onValue(dbTransactionRef, (snapshot) => {
         if (snapshot.val()) {
             const {giveCrypto, getCrypto, date, stage, n} = snapshot.val();
             dispatch(dataBaseActions.setOperationData({giveCrypto, getCrypto, date, stage, n}))
         }
-
     })
     const snapshot = await get(dbTransactionRef);
     const {giveCrypto, getCrypto, date, stage, n} = snapshot.val();
     dispatch(dataBaseActions.setOperationData({giveCrypto, getCrypto, date, stage, n}))
-    fetchCompleted()
 }
 
 export const setAuthorized = () => async (dispatch) => {
@@ -157,7 +152,7 @@ export const setAuthorized = () => async (dispatch) => {
         }
     })
 }
-export let logOff = () => async (dispatch) => {
+export const logOff = () => async (dispatch) => {
     await signOut(auth);
     dispatch(dataBaseActions.logOut())
 }
