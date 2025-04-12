@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import s from './exchange.module.css'
+import React, {useCallback, useMemo, useState} from 'react';
+import s from './exchange.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import {cryptoActions, getCurrencies} from "../store/cryptoSlice.js";
+import {cryptoActions} from "../store/cryptoSlice.js";
 import CryptoGiveList from "./CryptoGiveList.jsx";
 import CryptoGetList from "./CryptoGetList.jsx";
 import * as SVGLoaders from "svg-loaders-react";
 
 const Exchange = () => {
-    const {cryptosList: list, currencies, reserve, giveCrypto, getCrypto} = useSelector((state) => state.cryptos)
+    const {cryptosList: list, currencies, reserve} = useSelector((state) => state.cryptos)
     const [active, setActive] = useState(list[0]);
     const dispatch = useDispatch();
     const {setGiveCrypto, setGetCrypto} = cryptoActions;

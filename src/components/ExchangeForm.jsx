@@ -1,20 +1,18 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import s from './exchangeForm.module.css'
-import Select from "react-select";
-import {cryptoActions} from "../store/cryptoSlice.js";
-import {useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
 import {startOperation} from "../store/dataBaseSlice.js";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Loader from "../ui/Loader/Loader.jsx";
 import inputFormatValue from "../helpers/inputFormatValue.js";
+import MySelect from "./mySelect.jsx";
 
 const ExchangeForm = () => {
     const [isFetching, setIsFetching] = useState(false);
-    const user = useSelector(state => state.dataBase.user)
+    const user = useSelector(state => state.dataBase.user);
     const nav = useNavigate();
     const {
-        cryptosList: list,
         currencies,
         reserve,
         giveCrypto,
@@ -22,25 +20,24 @@ const ExchangeForm = () => {
         minSum,
         regEx,
     } = useSelector((state) => state.cryptos);
-    const dispatch = useDispatch();
-    const {setGetCrypto, setGiveCrypto} = cryptoActions;
     let price = currencies && parseFloat(currencies[giveCrypto.id][getCrypto.symbol])
-    if (getCrypto.id === giveCrypto.id) {
-        price = 1;
-    }
     const {
         register,
         formState: {errors},
         handleSubmit,
         setValue,
         watch,
-        trigger
+        trigger,
+        control
     } = useForm({mode: "onBlur"})
 
+    const methods = {
+        watch, setValue, trigger, control,
+    }
 
     const giveInputHandler = (e) => {
         const formattedValue = inputFormatValue(e)
-        setValue('giveCrypto', formattedValue);
+        setValue('giveCryptoInput', formattedValue);
         if (formattedValue !== '') {
             const numValue = parseFloat(formattedValue);
             const getCryptoValue = (numValue * price).toFixed(6);
@@ -49,7 +46,7 @@ const ExchangeForm = () => {
             setValue('getCrypto', '');
         }
         trigger('getCrypto')
-        trigger('giveCrypto')
+        trigger('giveCryptoInput')
     };
 
     const getInputHandler = (e) => {
@@ -58,67 +55,13 @@ const ExchangeForm = () => {
         if (formattedValue !== '') {
             const numValue = parseFloat(formattedValue);
             const giveCryptoValue = (numValue / price).toFixed(6);
-            setValue('giveCrypto', giveCryptoValue);
+            setValue('giveCryptoInput', giveCryptoValue);
         } else {
-            setValue('giveCrypto', '');
+            setValue('giveCryptoInput', '');
         }
         trigger('getCrypto')
-        trigger('giveCrypto')
+        trigger('giveCryptoInput')
     };
-
-
-    const options = list.map((item) => {
-        return {
-            value: item,
-            label: <div className={s.select_item}><img src={item.image} height="40px" width="40px"/> {item.name} </div>
-        }
-    })
-    const defaultSelectGetValue = options.find(item => item.value.id === getCrypto.id)
-    const defaultSelectGiveValue = options.find(item => item.value.id === giveCrypto.id)
-
-
-    let getOptions = options.filter((option) => {
-        return option.value.id !== defaultSelectGiveValue.value.id
-
-    })
-    let giveOptions = options.filter((option) => {
-        return option.value.id !== defaultSelectGetValue.value.id;
-
-
-    })
-
-    let localGiveCrypto = giveCrypto;
-    const giveSelectHandler = (item) => {
-        dispatch(setGiveCrypto(item.value))
-        localGiveCrypto = item.value;
-        getOptions = options.filter((option) => {
-            return option.value.id !== item.value.id;
-        })
-        const give = watch('giveCrypto')
-        const price = currencies[item.value.id][getCrypto.symbol];
-        setValue('getCrypto', parseFloat((give * price).toFixed(6)))
-        trigger('giveCrypto').catch(() => {
-        })
-        trigger('getCrypto').catch(() => {
-        })
-    }
-    let localGetCrypto = getCrypto;
-    const getSelectHandler = (item) => {
-        dispatch(setGetCrypto(item.value))
-        localGetCrypto = item.value;
-        giveOptions = options.filter((option) => {
-            return option.value.id !== item.value.id;
-        })
-        const price = currencies[giveCrypto.id][item.value.symbol];
-        const give = watch('giveCrypto')
-        console.log(watch('getSelect'))
-        setValue('getCrypto', parseFloat((give * price).toFixed(6)))
-        trigger('giveCrypto').catch(() => {
-        })
-        trigger('getCrypto').catch(() => {
-        })
-    }
-
 
     const onSubmit = async (data) => {
         const giveCryptoObj = {
@@ -156,20 +99,24 @@ const ExchangeForm = () => {
                                 className={s.bold}> 1 {giveCrypto.name} = {price} {getCrypto.name} </span>
                                 <h2>Отдаёте {giveCrypto.name}</h2>
                                 <div className={s.give}>
-                                    <Select className={s.give_select}
-                                            onChange={giveSelectHandler}
-                                            defaultValue={defaultSelectGiveValue}
-                                            options={giveOptions}
-                                    />
+                                    <FormProvider {...methods}>
+                                        <MySelect
+                                            type={'give'}
+                                            name={"giveCryptoSelect"}
+                                        />
+                                    </FormProvider>
                                     <div className={s.sum}>
                                         <div className={s.sum_text}>сумма<span className={s.star}>*</span>:
                                         </div>
                                         <div className={s.input_container}>
-                                            <input {...register('giveCrypto', {
+                                            <input {...register('giveCryptoInput', {
                                                 required: "Поле обязательно",
                                                 validate: {
                                                     isNumber: value => !isNaN(value) || 'Должно быть числом',
-                                                    min: value => value > minSum[localGiveCrypto.id] || `Минимальная сумма ${minSum[localGiveCrypto.id]}`,
+                                                    min: (value) => {
+                                                        const giveSelect = watch('giveCryptoSelect')
+                                                        return value > minSum[giveSelect.value.id] || `Минимальная сумма ${minSum[giveSelect.value.id]}`
+                                                    },
 
                                                 }
                                             })}
@@ -184,12 +131,11 @@ const ExchangeForm = () => {
                                 <hr className={s.hr}/>
                                 <h2>Получаете</h2>
                                 <div className={s.get}>
-                                    <Select className={s.get_select}
-                                            defaultValue={defaultSelectGetValue}
-                                            options={getOptions}
-                                            onChange={getSelectHandler}
-                                    />
-
+                                    <FormProvider {...methods}>
+                                        <MySelect
+                                            name={"getCryptoSelect"}
+                                        />
+                                    </FormProvider>
                                     <div className={s.sum}>
                                         <div className={s.sum_text}>сумма<span className={s.star}>*</span>:
                                         </div>
@@ -197,9 +143,12 @@ const ExchangeForm = () => {
                                             <input {...register('getCrypto', {
                                                 required: 'Обязательно',
                                                 validate: {
-                                                    maxValue: value => value < reserve[localGetCrypto.id] || `в резерве ${reserve[localGetCrypto.id]}`,
+                                                    maxValue: value => {
+                                                        const getSelect = watch("getCryptoSelect")
+                                                        return value < reserve[getSelect.value.id] || `в резерве ${reserve[getSelect.value.id]}`
+                                                    },
                                                     isNumber: value => !isNaN(value) || 'Должно быть числом',
-                                                    minValue: value => value > 0.00001 ||  '>0',
+                                                    minValue: value => value > 0.00001 || 'должно быть > 0',
                                                 }
 
                                             })}

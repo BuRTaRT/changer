@@ -102,8 +102,6 @@ const cryptoSlice = createSlice({
             'ripple': 6622,
             'dogecoin': 42263,
             'binancecoin': 32.734
-
-
         },
         currencies: null,
         giveCrypto: {
