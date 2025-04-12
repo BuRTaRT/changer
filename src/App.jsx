@@ -19,11 +19,10 @@ import Reviews from "./pages/Reviews/Reviews.jsx";
 function App() {
     const dispatch = useDispatch();
     const {user, emailVerified} = useSelector(state => state.dataBase)
-
     useEffect(() => {
         dispatch(getCurrencies())
         dispatch(setAuthorized())
-    }, [])
+    }, [dispatch])
     return (
         <div className={'App'}>
             {user && !emailVerified && <Unconfirmed/>}

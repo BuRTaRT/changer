@@ -30,7 +30,6 @@ const Login = () => {
     }
     return (
         <div className='container'>
-
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <h2 className={s.login_header}>Вход</h2>

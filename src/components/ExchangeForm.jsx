@@ -5,8 +5,8 @@ import {startOperation} from "../store/dataBaseSlice.js";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Loader from "../ui/Loader/Loader.jsx";
-import inputFormatValue from "../helpers/inputFormatValue.js";
 import MySelect from "./mySelect.jsx";
+import MyInput from "./MyInput.jsx";
 
 const ExchangeForm = () => {
     const [isFetching, setIsFetching] = useState(false);
@@ -14,10 +14,8 @@ const ExchangeForm = () => {
     const nav = useNavigate();
     const {
         currencies,
-        reserve,
         giveCrypto,
         getCrypto,
-        minSum,
         regEx,
     } = useSelector((state) => state.cryptos);
     let price = currencies && parseFloat(currencies[giveCrypto.id][getCrypto.symbol])
@@ -29,39 +27,11 @@ const ExchangeForm = () => {
         watch,
         trigger,
         control
-    } = useForm({mode: "onBlur"})
+    } = useForm({mode: "all"})
 
     const methods = {
-        watch, setValue, trigger, control,
+        watch, setValue, trigger, control, register, errors
     }
-
-    const giveInputHandler = (e) => {
-        const formattedValue = inputFormatValue(e)
-        setValue('giveCryptoInput', formattedValue);
-        if (formattedValue !== '') {
-            const numValue = parseFloat(formattedValue);
-            const getCryptoValue = (numValue * price).toFixed(6);
-            setValue('getCrypto', getCryptoValue);
-        } else {
-            setValue('getCrypto', '');
-        }
-        trigger('getCrypto')
-        trigger('giveCryptoInput')
-    };
-
-    const getInputHandler = (e) => {
-        const formattedValue = inputFormatValue(e)
-        setValue('getCrypto', formattedValue);
-        if (formattedValue !== '') {
-            const numValue = parseFloat(formattedValue);
-            const giveCryptoValue = (numValue / price).toFixed(6);
-            setValue('giveCryptoInput', giveCryptoValue);
-        } else {
-            setValue('giveCryptoInput', '');
-        }
-        trigger('getCrypto')
-        trigger('giveCryptoInput')
-    };
 
     const onSubmit = async (data) => {
         const giveCryptoObj = {
@@ -83,6 +53,7 @@ const ExchangeForm = () => {
             <div className="container">
                 <Loader isFetching={isFetching}/>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <FormProvider {...methods}>
                     <div className={s.exchange_block}>
                         <div className={s.exchange_inner1}>
                             <h2>Обмен {giveCrypto.name} на {getCrypto.name}</h2>
@@ -99,65 +70,27 @@ const ExchangeForm = () => {
                                 className={s.bold}> 1 {giveCrypto.name} = {price} {getCrypto.name} </span>
                                 <h2>Отдаёте {giveCrypto.name}</h2>
                                 <div className={s.give}>
-                                    <FormProvider {...methods}>
                                         <MySelect
                                             type={'give'}
                                             name={"giveCryptoSelect"}
                                         />
-                                    </FormProvider>
                                     <div className={s.sum}>
                                         <div className={s.sum_text}>сумма<span className={s.star}>*</span>:
                                         </div>
-                                        <div className={s.input_container}>
-                                            <input {...register('giveCryptoInput', {
-                                                required: "Поле обязательно",
-                                                validate: {
-                                                    isNumber: value => !isNaN(value) || 'Должно быть числом',
-                                                    min: (value) => {
-                                                        const giveSelect = watch('giveCryptoSelect')
-                                                        return value > minSum[giveSelect.value.id] || `Минимальная сумма ${minSum[giveSelect.value.id]}`
-                                                    },
 
-                                                }
-                                            })}
-                                                   onChange={giveInputHandler}
-                                                   placeholder='0'
-                                            />
-                                            {errors.giveCrypto &&
-                                                <p className={s.error}>{errors.giveCrypto.message}</p>}
-                                        </div>
+                                            <MyInput type={'give'} name={'giveCryptoInput'}/>
                                     </div>
                                 </div>
                                 <hr className={s.hr}/>
                                 <h2>Получаете</h2>
                                 <div className={s.get}>
-                                    <FormProvider {...methods}>
                                         <MySelect
                                             name={"getCryptoSelect"}
                                         />
-                                    </FormProvider>
                                     <div className={s.sum}>
                                         <div className={s.sum_text}>сумма<span className={s.star}>*</span>:
                                         </div>
-                                        <div className={s.input_container}>
-                                            <input {...register('getCrypto', {
-                                                required: 'Обязательно',
-                                                validate: {
-                                                    maxValue: value => {
-                                                        const getSelect = watch("getCryptoSelect")
-                                                        return value < reserve[getSelect.value.id] || `в резерве ${reserve[getSelect.value.id]}`
-                                                    },
-                                                    isNumber: value => !isNaN(value) || 'Должно быть числом',
-                                                    minValue: value => value > 0.00001 || 'должно быть > 0',
-                                                }
-
-                                            })}
-                                                   onChange={getInputHandler}
-                                                   placeholder='0'
-                                            />
-                                            {errors.getCrypto && <p className={s.error}>{errors.getCrypto.message}</p>}
-                                        </div>
-
+                                            <MyInput type={'get'} name={'getCrypto'}/>
                                     </div>
                                 </div>
 
@@ -187,7 +120,7 @@ const ExchangeForm = () => {
                                                {...register('email', {
                                                    required: 'Поле Обязательно',
                                                    pattern: {
-                                                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                                                        message: "Неверный формат емейла"
                                                    }
                                                })}
@@ -240,6 +173,7 @@ const ExchangeForm = () => {
                             </div>
                         </div>
                     </div>
+                    </FormProvider>
                 </form>
             </div>
         </div>
